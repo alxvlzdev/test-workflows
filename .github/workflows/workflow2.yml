@@ -36,4 +36,4 @@ jobs:
       - name: Check if tag is on main branch
         run: |
           echo "Branch1 is $(git branch --show-current)"
-          echo "Branch2 is $(git branch --contains ${{ github.sha }}"
+          echo "Branch2 is $(git branch --contains ${{ github.sha }})"
