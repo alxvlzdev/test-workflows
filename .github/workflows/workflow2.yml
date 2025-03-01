@@ -29,4 +29,4 @@ jobs:
       - name: Check if tag is on main branch
         run: |
           echo "Branch1 is $(git branch --show-current)"
-          echo "Branch2 is $(git branch -r --contains $GITHUB_REF)"
+          echo "Branch2 is $(git branch --contains $GITHUB_REF)"
