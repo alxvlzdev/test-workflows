@@ -26,6 +26,11 @@ jobs:
       - name: Workflow2
         run: echo "Hello Workflow2!"
 
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
       - name: Check if tag is on main branch
         run: |
           echo "Branch1 is $(git branch --show-current)"
