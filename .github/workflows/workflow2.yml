@@ -1,0 +1,32 @@
+name: Workflow2
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+*'
+
+jobs:
+  dump-contexts:
+    uses: ./.github/workflows/dump-contexts.yml
+    secrets: inherit
+
+  pre-workflow2:
+    uses: ./.github/workflows/workflow1.yml
+    secrets: inherit
+
+  workflow2:
+    needs: pre-workflow2
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Workflow2
+        run: echo "Hello Workflow2!"
+
+      - name: Check if tag is on main branch
+        run: |
+          echo "Branch1 is $(git branch --show-current)"
+          echo "Branch2 is $(git branch -r --contains $GITHUB_REF)"
