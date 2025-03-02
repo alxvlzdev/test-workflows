@@ -22,8 +22,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        #with:
-        #  fetch-depth: 0 # load the entire history, otherwise git will not find the branch
+        with:
+          fetch-depth: 0 # load the entire history, otherwise git will not find the branch
 
       - name: Workflow2
         run: echo "Hello Workflow2!"
