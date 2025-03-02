@@ -35,8 +35,7 @@ jobs:
 
       - name: Find branch for tag
         run: |
-          TAG_COMMIT=$(git rev-list -n 1 ${{ github.ref_name }})
-          BRANCHES=$(git branch -r --contains $TAG_COMMIT | grep -v HEAD | sed 's/origin\///')
+          BRANCHES=$(git branch -r --contains ${{ github.sha }} | grep -v HEAD | sed 's/origin\///')
           DEFAULT=$(git remote show origin | awk '/HEAD branch/ {print $NF}')
           for BRANCH in $BRANCHES; do
             if [[ "$BRANCH" != "$DEFAULT" && "$BRANCH" != "main" ]]; then
