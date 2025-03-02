@@ -37,6 +37,7 @@ jobs:
         run: |
           branch=$(git branch --show-current)
           echo "Branch is $branch."
+          echo "Branch2 is $(git remote show origin | awk '/HEAD branch/ {print $NF}')"
           if [ "$branch" != "main" ]; then
             echo "Error: Tag must be on main branch!"
             exit 1
