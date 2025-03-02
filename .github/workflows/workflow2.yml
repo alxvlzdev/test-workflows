@@ -28,6 +28,7 @@ jobs:
         run: |
           branches=$(git branch -r --contains ${{ github.sha }} | grep -v HEAD | sed 's/origin\///')
           default_branch=$(git remote show origin | awk '/HEAD branch/ {print $NF}')
+          echo "Default branch is $default_branch."
           for branch in $branches; do
             if [[ "$branch" != "$default_branch" && "$branch" != "main" ]]; then
               echo "Error: Tag must be on main branch!"
